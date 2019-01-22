@@ -4,11 +4,13 @@
 __author__ = 'Gerardo Aragon, David Manlove'
 
 import os, subprocess, shutil
-import config_file_nolive as cf
+#import config_file_nolive as cf
+import config_file as cf
 import errno, os, stat
 import json
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LIVE_TESTS = True
 
 # From: http://stackoverflow.com/questions/1213706/what-user-do-python-scripts-run-as-in-windows
 def handleRemoveReadonly(func, path, exc):
@@ -115,7 +117,7 @@ def main(url_git, student_no, date_deadline):
     print(out)
     out = out.decode('ascii')
     commits = out.split('\n')[0:-1]
-    commits.reverse()
+    #commits.reverse()
 
     print("Repository has " + str(len(commits)) + " commits!")
     noCommits = len(commits)
@@ -166,6 +168,15 @@ def main(url_git, student_no, date_deadline):
                 os.remove("db.sqlite3")
             except:
                 print("Couldn't delete db.sqlite3 and migrations folder")
+            
+            if LIVE_TESTS:
+                try:
+                    shutil.copy2(BASE_DIR + "/chromedriver.exe", working_dir)
+                except Exception:
+                    import traceback
+                    traceback.print_exc()
+                    #print("Couldn't copy chromedriver")
+            
             try:
                 subprocess.call('python manage.py makemigrations rango')
             except:
