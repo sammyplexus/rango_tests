@@ -22,7 +22,7 @@ These tests are only valid for the Rango app of the Tango with Django Book (http
 
 ## How-To
 
-** THIS TESTS ONLY WORK ON WINDOWS! WE WILL NOT SUPPORT macOS and Linux **
+**THIS TESTS ONLY WORK ON WINDOWS! WE WILL NOT SUPPORT macOS and Linux**
 
 For 10% assessment, there are 46 public tests (~68%)and 22 private tests (~32%) (Total: 68)
 
