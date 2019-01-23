@@ -117,7 +117,7 @@ def main(url_git, student_no, date_deadline):
     print(out)
     out = out.decode('ascii')
     commits = out.split('\n')[0:-1]
-    #commits.reverse()
+    commits.reverse()
 
     print("Repository has " + str(len(commits)) + " commits!")
     noCommits = len(commits)
