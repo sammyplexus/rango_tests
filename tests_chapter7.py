@@ -85,7 +85,7 @@ class Chapter7LiveServerTestCase(StaticLiveServerTestCase):
         url_path = self.browser.current_url
         response = self.client.get(url_path)
 
-        self.assertIn('required'.lower(), response.content.lower())
+        self.assertIn('required'.lower(), response.content.decode('ascii').lower())
 
     @chapter7
     def test_add_category_that_already_exists(self):
